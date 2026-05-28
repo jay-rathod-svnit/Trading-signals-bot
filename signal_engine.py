@@ -120,7 +120,8 @@ class SignalEngine:
                 reasons.append("Volume: Above Average ✅")
 
         return score, reasons
-
+    #   print("signal triggered!")
+    
     #  SELL scoring 
 
     @staticmethod
