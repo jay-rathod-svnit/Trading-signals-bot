@@ -1,6 +1,4 @@
-# ──────────────────────────────────────────────
 #  CME Trading Signal Bot — Entry Point
-# ──────────────────────────────────────────────
 """
 Launches a scheduler that scans all configured instruments every
 60 seconds on 5-minute candles, evaluates multi-indicator confluence,
@@ -27,7 +25,7 @@ from telegram_bot import (
     send_error_alert,
 )
 
-# ── Logging setup ─────────────────────────────
+#  Logging setup 
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s │ %(levelname)-7s │ %(name)s │ %(message)s",
@@ -35,11 +33,11 @@ logging.basicConfig(
 )
 logger = logging.getLogger("TradingBot")
 
-# ── Global signal engine (keeps cooldown state) ─
+#  Global signal engine (keeps cooldown state) 
 engine = SignalEngine()
 
 
-# ── Scanner ───────────────────────────────────
+#  Scanner 
 
 def scan_markets():
     """Fetch data → compute indicators → evaluate signals → notify."""
@@ -79,14 +77,12 @@ def scan_markets():
             pass
 
 
-# ── Main ──────────────────────────────────────
+#  Main 
 
 def main():
     banner = (
         "\n"
-        "╔══════════════════════════════════════════════╗\n"
-        "║     CME Trading Signal Bot  —  Starting      ║\n"
-        "╚══════════════════════════════════════════════╝\n"
+        "     CME Trading Signal Bot  —  Starting      \n"
     )
     logger.info(banner)
 
