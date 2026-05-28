@@ -1,6 +1,4 @@
-# ──────────────────────────────────────────────
 #  Signal Generation Engine
-# ──────────────────────────────────────────────
 import logging
 from datetime import datetime, timedelta
 
@@ -23,7 +21,7 @@ class SignalEngine:
         # key = "TICKER_DIRECTION" → datetime of last signal
         self._cooldowns: dict[str, datetime] = {}
 
-    # ── cooldown helpers ──────────────────────
+    #  cooldown helpers 
 
     def _is_on_cooldown(self, ticker: str, direction: str) -> bool:
         key = f"{ticker}_{direction}"
@@ -35,7 +33,7 @@ class SignalEngine:
     def _set_cooldown(self, ticker: str, direction: str):
         self._cooldowns[f"{ticker}_{direction}"] = datetime.now()
 
-    # ── core evaluation ───────────────────────
+    #  core evaluation 
 
     def evaluate(self, ticker: str, df: pd.DataFrame) -> dict | None:
         """
@@ -69,7 +67,7 @@ class SignalEngine:
 
         return None
 
-    # ── BUY scoring ───────────────────────────
+    #  BUY scoring 
 
     @staticmethod
     def _score_buy(cur: pd.Series, prev: pd.Series) -> tuple[float, list[str]]:
@@ -123,7 +121,7 @@ class SignalEngine:
 
         return score, reasons
 
-    # ── SELL scoring ──────────────────────────
+    #  SELL scoring 
 
     @staticmethod
     def _score_sell(cur: pd.Series, prev: pd.Series) -> tuple[float, list[str]]:
@@ -177,7 +175,7 @@ class SignalEngine:
 
         return score, reasons
 
-    # ── signal builder ────────────────────────
+    #  signal builder 
 
     def _build_signal(
         self,
