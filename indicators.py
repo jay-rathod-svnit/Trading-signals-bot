@@ -1,6 +1,4 @@
-# ──────────────────────────────────────────────
 #  Technical Indicator Engine
-# ──────────────────────────────────────────────
 import pandas as pd
 import ta
 from config import (
@@ -30,10 +28,10 @@ def compute_indicators(df: pd.DataFrame) -> pd.DataFrame:
     df = df.copy()
     close = df["Close"]
 
-    # ── RSI ────────────────────────────────────
+    #  RSI 
     df["RSI"] = ta.momentum.rsi(close, window=RSI_PERIOD)
 
-    # ── MACD ───────────────────────────────────
+    #  MACD 
     macd = ta.trend.MACD(
         close,
         window_slow=MACD_SLOW,
@@ -44,11 +42,11 @@ def compute_indicators(df: pd.DataFrame) -> pd.DataFrame:
     df["MACD_Signal"] = macd.macd_signal()
     df["MACD_Hist"]   = macd.macd_diff()
 
-    # ── Exponential Moving Averages ────────────
+    #  Exponential Moving Averages 
     df["EMA_Fast"] = ta.trend.ema_indicator(close, window=EMA_FAST)
     df["EMA_Slow"] = ta.trend.ema_indicator(close, window=EMA_SLOW)
 
-    # ── Bollinger Bands ────────────────────────
+    #  Bollinger Bands 
     bb = ta.volatility.BollingerBands(
         close, window=BB_PERIOD, window_dev=BB_STD,
     )
@@ -56,7 +54,7 @@ def compute_indicators(df: pd.DataFrame) -> pd.DataFrame:
     df["BB_Lower"]  = bb.bollinger_lband()
     df["BB_Middle"] = bb.bollinger_mavg()
 
-    # ── Volume SMA (for volume confirmation) ───
+    #  Volume SMA (for volume confirmation) 
     df["Vol_SMA"] = df["Volume"].rolling(window=20).mean()
 
     return df
