@@ -1,6 +1,4 @@
-# ──────────────────────────────────────────────
 #  Telegram Bot — Message Formatting & Sending
-# ──────────────────────────────────────────────
 import logging
 from datetime import datetime, timezone
 
@@ -13,7 +11,7 @@ logger = logging.getLogger(__name__)
 TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 
 
-# ── low-level send ────────────────────────────
+#  low-level send 
 
 def send_message(text: str, parse_mode: str = "HTML") -> bool:
     """Post a message to the configured Telegram chat."""
@@ -39,7 +37,7 @@ def send_message(text: str, parse_mode: str = "HTML") -> bool:
         return False
 
 
-# ── signal formatter ──────────────────────────
+#  signal formatter 
 
 def format_signal(signal: dict) -> str:
     """Turn a signal dict into a rich Telegram message (HTML)."""
@@ -75,7 +73,7 @@ def send_signal(signal: dict) -> bool:
     return send_message(format_signal(signal))
 
 
-# ── utility messages ──────────────────────────
+#  utility messages 
 
 def send_startup_message() -> bool:
     """Announce that the bot is online."""
