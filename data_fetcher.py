@@ -1,6 +1,4 @@
-# ──────────────────────────────────────────────
 #  Market Data Fetcher  —  yfinance
-# ──────────────────────────────────────────────
 import time
 import logging
 import yfinance as yf
