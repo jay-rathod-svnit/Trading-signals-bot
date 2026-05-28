@@ -127,9 +127,7 @@ python main.py
 You should see something like:
 
 ```
-╔══════════════════════════════════════════════╗
-║     CME Trading Signal Bot  —  Starting      ║
-╚══════════════════════════════════════════════╝
+     CME Trading Signal Bot  —  Starting      
 
 2026-05-26 20:19:00 │ INFO │ Sending startup message to Telegram...
 2026-05-26 20:19:01 │ INFO │ Startup message delivered ✓
