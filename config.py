@@ -25,7 +25,7 @@ BB_STD       = 2
 
 #  Scan Settings 
 SCAN_INTERVAL_SECONDS = 60        # Run scanner every 1 minute
-CANDLE_INTERVAL       = "5m"      # 5-minute candles
+CANDLE_INTERVAL       = "75m"     # 75-minute candles
 YF_PERIOD             = "5d"      # Pull last 5 days of M5 data
 COOLDOWN_MINUTES      = 15        # Min gap between same signal
 MIN_SIGNAL_STRENGTH   = 3         # At least 3/5 indicators must agree
