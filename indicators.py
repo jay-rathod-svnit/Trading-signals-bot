@@ -12,19 +12,7 @@ from config import (
     BB_STD,
 )
 
-
 def compute_indicators(df: pd.DataFrame) -> pd.DataFrame:
-    """
-    Enrich an OHLCV DataFrame with all technical indicators used
-    by the signal engine.
-
-    Added columns
-    ─────────────
-    RSI, MACD, MACD_Signal, MACD_Hist,
-    EMA_Fast, EMA_Slow,
-    BB_Upper, BB_Lower, BB_Middle,
-    Vol_SMA
-    """
     df = df.copy()
     close = df["Close"]
 
