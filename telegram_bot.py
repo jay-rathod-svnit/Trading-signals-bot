@@ -85,7 +85,7 @@ def send_startup_message() -> bool:
     msg = (
         "🤖 <b>Trading Signal Bot — Online</b>\n"
         "\n"
-        "📡 Scanning every <b>1 minute</b> on <b>M5</b> candles\n"
+        "📡 Scanning every <b>1 minute</b> on <b>M75</b> candles\n"
         "\n"
         "📋 <b>Instruments:</b>\n"
         f"{instruments_lines}\n"
