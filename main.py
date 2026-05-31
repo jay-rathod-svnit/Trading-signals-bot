@@ -1,15 +1,4 @@
 #  CME Trading Signal Bot — Entry Point
-"""
-Launches a scheduler that scans all configured instruments every
-60 seconds on 5-minute candles, evaluates multi-indicator confluence,
-and sends alerts to Telegram when actionable signals appear.
-
-Usage
-─────
-    python main.py
-    Ctrl+C to stop
-"""
-
 import logging
 import sys
 
@@ -38,7 +27,6 @@ engine = SignalEngine()
 
 
 #  Scanner 
-
 def scan_markets():
     """Fetch data → compute indicators → evaluate signals → notify."""
     logger.info("── Scanning markets ─────────────────────────")
