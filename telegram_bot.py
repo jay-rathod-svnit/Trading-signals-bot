@@ -14,7 +14,6 @@ TELEGRAM_API = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}"
 #  low-level send 
 
 def send_message(text: str, parse_mode: str = "HTML") -> bool:
-    """Post a message to the configured Telegram chat."""
     try:
         resp = _requests.post(
             f"{TELEGRAM_API}/sendMessage",
@@ -40,7 +39,6 @@ def send_message(text: str, parse_mode: str = "HTML") -> bool:
 #  signal formatter 
 
 def format_signal(signal: dict) -> str:
-    """Turn a signal dict into a rich Telegram message (HTML)."""
     info      = signal["instrument"]
     direction = signal["direction"]
 
@@ -69,14 +67,12 @@ def format_signal(signal: dict) -> str:
 
 
 def send_signal(signal: dict) -> bool:
-    """Format and dispatch a trading signal."""
     return send_message(format_signal(signal))
 
 
 #  utility messages 
 
 def send_startup_message() -> bool:
-    """Announce that the bot is online."""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     instruments_lines = "\n".join(
         f"  • {v['emoji']} {v['display']} ({k})"
@@ -99,12 +95,10 @@ def send_startup_message() -> bool:
 
 
 def send_scan_summary(scanned: int, signals_found: int) -> None:
-    """Optionally log scan results (only used in verbose mode)."""
     logger.info(f"Scan done — {scanned} instruments, {signals_found} signal(s)")
 
 
 def send_error_alert(error_msg: str) -> bool:
-    """Push an error notification to Telegram."""
     return send_message(
         f"❌ <b>Bot Error</b>\n\n<code>{error_msg[:1000]}</code>"
     )
