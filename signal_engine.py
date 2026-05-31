@@ -10,12 +10,6 @@ logger = logging.getLogger(__name__)
 
 
 class SignalEngine:
-    """
-    Evaluates technical indicators on the latest candle and produces
-    BUY / SELL signals when enough indicators agree (confluence).
-
-    A per-instrument, per-direction cooldown prevents duplicate alerts.
-    """
 
     def __init__(self):
         # key = "TICKER_DIRECTION" → datetime of last signal
@@ -36,12 +30,6 @@ class SignalEngine:
     #  core evaluation 
 
     def evaluate(self, ticker: str, df: pd.DataFrame) -> dict | None:
-        """
-        Score BUY and SELL conditions on the latest two candles.
-
-        Returns a signal dict when strength ≥ MIN_SIGNAL_STRENGTH,
-        or ``None`` if no actionable signal.
-        """
         if len(df) < 2:
             return None
 
