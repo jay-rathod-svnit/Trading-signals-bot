@@ -9,12 +9,6 @@ logger = logging.getLogger(__name__)
 
 
 def fetch_candles(ticker: str, retries: int = 2) -> pd.DataFrame | None:
-    """
-    Fetch 5-minute OHLCV candles for *ticker*.
-
-    Uses ``yf.Ticker().history()`` so the returned DataFrame always has
-    flat, single-level column names (Open, High, Low, Close, Volume).
-    """
     for attempt in range(1, retries + 1):
         try:
             t = yf.Ticker(ticker)
@@ -25,7 +19,6 @@ def fetch_candles(ticker: str, retries: int = 2) -> pd.DataFrame | None:
                 time.sleep(1)
                 continue
 
-            # Keep only the columns we need
             required = ["Open", "High", "Low", "Close", "Volume"]
             missing = [c for c in required if c not in data.columns]
             if missing:
@@ -47,12 +40,6 @@ def fetch_candles(ticker: str, retries: int = 2) -> pd.DataFrame | None:
 
 
 def fetch_all_instruments() -> dict[str, pd.DataFrame]:
-    """
-    Fetch candles for every instrument in ``config.INSTRUMENTS``.
-
-    Returns a dict  ``{ticker: DataFrame}``  — only instruments with
-    enough rows for indicator calculation are included.
-    """
     results: dict[str, pd.DataFrame] = {}
     for ticker in INSTRUMENTS:
         df = fetch_candles(ticker)
