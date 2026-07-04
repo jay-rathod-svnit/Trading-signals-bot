@@ -1,8 +1,8 @@
 #  CME Trading Signal Bot — Configuration
 
 #  Telegram 
-TELEGRAM_BOT_TOKEN = "8232342634:AAFQhSzBxPubBF0mB8VoB7PYyG-KkZ-CLqk"
-TELEGRAM_CHAT_ID   = "-1003974022501"
+TELEGRAM_BOT_TOKEN = "***************"
+TELEGRAM_CHAT_ID   = "***************"
 
 #  Instruments 
 #    ticker  →  { display name, emoji }
